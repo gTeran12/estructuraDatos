@@ -22,3 +22,13 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+/EstructuraProyecto/nbproject/private/
+/EstructuraProyecto/build/
+/Proyecto/nbproject/private/
+/Proyecto/build/
+/RentaUnCarro/nbproject/private/
+/RentaUnCarro/build/
+/RentaUnCarro/dist/
+/CarRentar/nbproject/private/
+/CarRentar/build/
+/AlquilerCarros/target/
