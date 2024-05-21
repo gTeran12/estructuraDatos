@@ -1,0 +1,4 @@
+module-info.class
+com\mycompany\estructuraproyecto\App.class
+com\mycompany\estructuraproyecto\SystemInfo.class
+GUI\Login.class
