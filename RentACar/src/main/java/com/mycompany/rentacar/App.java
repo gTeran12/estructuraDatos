@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import javafx.scene.image.Image;
 
 /**
  * JavaFX App
@@ -14,10 +15,13 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
+    
 
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("primary"), 700, 500);
+        stage.getIcons().add(new Image("file:src/main/resources/assets/logoCarRent.jpg"));//img icono
+        stage.setTitle("CAR RENTAL");//titulo de app
         stage.setScene(scene);
         stage.show();
     }
