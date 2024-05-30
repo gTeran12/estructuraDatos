@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
@@ -8,37 +9,36 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.rentacar.CrearVehiculoController">
    <children>
       <HBox layoutX="22.0" layoutY="14.0" prefHeight="44.0" prefWidth="235.0">
          <children>
-            <Label prefHeight="27.0" prefWidth="98.0" text="MARCA:">
+            <Label fx:id="lbMarca" prefHeight="27.0" prefWidth="98.0" text="MARCA:">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <ComboBox prefWidth="150.0" />
+            <ComboBox fx:id="cbMarca" prefWidth="150.0" />
          </children>
       </HBox>
       <HBox layoutX="350.0" layoutY="14.0" prefHeight="44.0" prefWidth="235.0">
          <children>
-            <Label prefHeight="27.0" prefWidth="98.0" text="MODELO:">
+            <Label fx:id="lbModelo" prefHeight="27.0" prefWidth="98.0" text="MODELO:">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <ComboBox prefWidth="150.0" />
+            <ComboBox fx:id="cbModelo" prefWidth="150.0" />
          </children>
       </HBox>
       <HBox layoutX="22.0" layoutY="59.0" prefHeight="44.0" prefWidth="235.0">
          <children>
-            <Label prefHeight="27.0" prefWidth="98.0" text="TIPO:">
+            <Label fx:id="lbTipo" prefHeight="27.0" prefWidth="98.0" text="TIPO:">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <ComboBox prefWidth="150.0" />
+            <ComboBox fx:id="cbTipo" prefWidth="150.0" />
          </children>
       </HBox>
       <HBox layoutX="350.0" layoutY="59.0" prefHeight="44.0" prefWidth="235.0">
@@ -48,57 +48,57 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField />
+            <TextField fx:id="txtPrecio" />
          </children>
       </HBox>
       <HBox layoutX="350.0" layoutY="103.0" prefHeight="44.0" prefWidth="280.0">
          <children>
-            <Label prefHeight="27.0" prefWidth="126.0" text="KILOMETRAJE:">
+            <Label fx:id="lbKilometraje" prefHeight="27.0" prefWidth="126.0" text="KILOMETRAJE:">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField />
+            <TextField fx:id="txtKilometraje" />
          </children>
       </HBox>
       <HBox layoutX="22.0" layoutY="103.0" prefHeight="44.0" prefWidth="270.0">
          <children>
-            <Label prefHeight="27.0" prefWidth="152.0" text="TRANSMISION:">
+            <Label fx:id="lbTransmision" prefHeight="27.0" prefWidth="152.0" text="TRANSMISION:">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <ComboBox prefWidth="150.0" />
+            <ComboBox fx:id="cbTransmision" prefWidth="150.0" />
          </children>
       </HBox>
       <HBox layoutX="22.0" layoutY="147.0" prefHeight="44.0" prefWidth="270.0">
          <children>
-            <Label prefHeight="27.0" prefWidth="152.0" text="UBICACION:">
+            <Label fx:id="lbUbicacion" prefHeight="27.0" prefWidth="152.0" text="UBICACION:">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <ComboBox prefWidth="150.0" />
+            <ComboBox fx:id="cbUbicacion" prefWidth="150.0" />
          </children>
       </HBox>
       <HBox layoutX="350.0" layoutY="147.0" prefHeight="44.0" prefWidth="270.0">
          <children>
-            <Label prefHeight="27.0" prefWidth="152.0" text="ACCIDENTES:">
+            <Label fx:id="lbAccidentes" prefHeight="27.0" prefWidth="152.0" text="ACCIDENTES:">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <ComboBox prefWidth="150.0" />
+            <ComboBox fx:id="cbAccidentes" prefWidth="150.0" />
          </children>
       </HBox>
       <HBox layoutX="22.0" layoutY="191.0" prefHeight="44.0" prefWidth="235.0">
          <children>
-            <Label prefHeight="27.0" prefWidth="98.0" text="PLACA:">
+            <Label fx:id="lbPlaca" prefHeight="27.0" prefWidth="98.0" text="PLACA:">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField />
+            <TextField fx:id="txtPlaca" />
          </children>
       </HBox>
       <HBox layoutX="350.0" layoutY="191.0" prefHeight="44.0" prefWidth="280.0">
@@ -113,13 +113,23 @@
       </HBox>
       <HBox layoutX="29.0" layoutY="250.0" prefHeight="214.0" prefWidth="441.0">
          <children>
-            <Label prefHeight="27.0" prefWidth="121.0" text="DESCRIPCION:">
+            <Label fx:id="lbDescripcion" prefHeight="27.0" prefWidth="121.0" text="DESCRIPCION:">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextArea prefHeight="214.0" prefWidth="322.0" text="INGRESAR LA DESCRIPCION DEL VEHICULO AQUI..." />
+            <TextArea fx:id="txtDescripcion" prefHeight="214.0" prefWidth="322.0" text="INGRESAR LA DESCRIPCION DEL VEHICULO AQUI..." />
          </children>
       </HBox>
+      <Button fx:id="btCancelar" layoutX="533.0" layoutY="391.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="44.0" prefWidth="120.0" text="CANCELAR">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="btGuardar" layoutX="533.0" layoutY="335.0" mnemonicParsing="false" onAction="#guardar" prefHeight="44.0" prefWidth="120.0" text="GUARDAR">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
    </children>
 </Pane>

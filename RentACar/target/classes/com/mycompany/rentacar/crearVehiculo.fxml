@@ -1,70 +1,135 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.rentacar.CrearVehiculoController">
    <children>
-      <VBox layoutX="88.0" layoutY="64.0" prefHeight="349.0" prefWidth="261.0">
+      <HBox layoutX="22.0" layoutY="14.0" prefHeight="44.0" prefWidth="235.0">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="50.0">
-               <children>
-                  <Label text="MARCA" />
-                  <ComboBox prefWidth="150.0" />
-               </children>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="42.0">
-               <children>
-                  <Label text="MODELO" />
-                  <ComboBox prefWidth="150.0" />
-               </children>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="55.0">
-               <children>
-                  <Label text="PLACA" />
-                  <TextField promptText="xxx-0000" />
-               </children>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="65.0">
-               <children>
-                  <Label text="AÑO" />
-                  <TextField />
-               </children>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="16.0">
-               <children>
-                  <Label text="KILOMETRAJE" />
-                  <TextField />
-               </children>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="48.0">
-               <children>
-                  <Label text="PRECIO" />
-                  <TextField />
-               </children>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="60.0">
-               <children>
-                  <Label text="AÑO" />
-                  <TextField />
-               </children>
-            </HBox>
+            <Label fx:id="lbMarca" prefHeight="27.0" prefWidth="98.0" text="MARCA:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="cbMarca" prefWidth="150.0" />
          </children>
-      </VBox>
-      <Button layoutX="568.0" layoutY="436.0" mnemonicParsing="false" text="REGISTRAR" />
-      <Button layoutX="560.0" layoutY="287.0" mnemonicParsing="false" text="EDITAR VEHICULO" />
-      <Button layoutX="560.0" layoutY="239.0" mnemonicParsing="false" text="BUSCAR VEHICULO" />
+      </HBox>
+      <HBox layoutX="350.0" layoutY="14.0" prefHeight="44.0" prefWidth="235.0">
+         <children>
+            <Label fx:id="lbModelo" prefHeight="27.0" prefWidth="98.0" text="MODELO:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="cbModelo" prefWidth="150.0" />
+         </children>
+      </HBox>
+      <HBox layoutX="22.0" layoutY="59.0" prefHeight="44.0" prefWidth="235.0">
+         <children>
+            <Label fx:id="lbTipo" prefHeight="27.0" prefWidth="98.0" text="TIPO:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="cbTipo" prefWidth="150.0" />
+         </children>
+      </HBox>
+      <HBox layoutX="350.0" layoutY="59.0" prefHeight="44.0" prefWidth="235.0">
+         <children>
+            <Label prefHeight="27.0" prefWidth="98.0" text="PRECIO:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtPrecio" />
+         </children>
+      </HBox>
+      <HBox layoutX="350.0" layoutY="103.0" prefHeight="44.0" prefWidth="280.0">
+         <children>
+            <Label fx:id="lbKilometraje" prefHeight="27.0" prefWidth="126.0" text="KILOMETRAJE:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtKilometraje" />
+         </children>
+      </HBox>
+      <HBox layoutX="22.0" layoutY="103.0" prefHeight="44.0" prefWidth="270.0">
+         <children>
+            <Label fx:id="lbTransmision" prefHeight="27.0" prefWidth="152.0" text="TRANSMISION:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="cbTransmision" prefWidth="150.0" />
+         </children>
+      </HBox>
+      <HBox layoutX="22.0" layoutY="147.0" prefHeight="44.0" prefWidth="270.0">
+         <children>
+            <Label fx:id="lbUbicacion" prefHeight="27.0" prefWidth="152.0" text="UBICACION:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="cbUbicacion" prefWidth="150.0" />
+         </children>
+      </HBox>
+      <HBox layoutX="350.0" layoutY="147.0" prefHeight="44.0" prefWidth="270.0">
+         <children>
+            <Label fx:id="lbAccidentes" prefHeight="27.0" prefWidth="152.0" text="ACCIDENTES:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="cbAccidentes" prefWidth="150.0" />
+         </children>
+      </HBox>
+      <HBox layoutX="22.0" layoutY="191.0" prefHeight="44.0" prefWidth="235.0">
+         <children>
+            <Label fx:id="lbPlaca" prefHeight="27.0" prefWidth="98.0" text="PLACA:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtPlaca" />
+         </children>
+      </HBox>
+      <HBox layoutX="350.0" layoutY="191.0" prefHeight="44.0" prefWidth="280.0">
+         <children>
+            <Label prefHeight="27.0" prefWidth="92.0" text="IMAGEN:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField prefHeight="26.0" prefWidth="178.0" />
+         </children>
+      </HBox>
+      <HBox layoutX="29.0" layoutY="250.0" prefHeight="214.0" prefWidth="441.0">
+         <children>
+            <Label fx:id="lbDescripcion" prefHeight="27.0" prefWidth="121.0" text="DESCRIPCION:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="txtDescripcion" prefHeight="214.0" prefWidth="322.0" text="INGRESAR LA DESCRIPCION DEL VEHICULO AQUI..." />
+         </children>
+      </HBox>
+      <Button fx:id="btCancelar" layoutX="533.0" layoutY="391.0" mnemonicParsing="false" onMouseClicked="#cancelar" prefHeight="44.0" prefWidth="120.0" text="CANCELAR">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="btGuardar" layoutX="533.0" layoutY="335.0" mnemonicParsing="false" onMouseClicked="#guardar" prefHeight="44.0" prefWidth="120.0" text="GUARDAR">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
    </children>
-</AnchorPane>
+</Pane>
