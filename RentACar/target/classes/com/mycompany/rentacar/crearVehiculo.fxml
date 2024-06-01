@@ -121,12 +121,12 @@
             <TextArea fx:id="txtDescripcion" prefHeight="214.0" prefWidth="322.0" text="INGRESAR LA DESCRIPCION DEL VEHICULO AQUI..." />
          </children>
       </HBox>
-      <Button fx:id="btCancelar" layoutX="533.0" layoutY="391.0" mnemonicParsing="false" onMouseClicked="#cancelar" prefHeight="44.0" prefWidth="120.0" text="CANCELAR">
+      <Button fx:id="btCancelar" layoutX="533.0" layoutY="391.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="44.0" prefWidth="120.0" text="CANCELAR">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="btGuardar" layoutX="533.0" layoutY="335.0" mnemonicParsing="false" onMouseClicked="#guardar" prefHeight="44.0" prefWidth="120.0" text="GUARDAR">
+      <Button fx:id="btGuardar" layoutX="533.0" layoutY="335.0" mnemonicParsing="false" onAction="#guardar" prefHeight="44.0" prefWidth="120.0" text="GUARDAR">
          <font>
             <Font size="18.0" />
          </font>

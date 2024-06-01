@@ -7,11 +7,13 @@ package com.mycompany.rentacar;
 
 
 import com.mycompany.rentacar.App;
+import com.mycompany.rentacar.clases.ArrayList;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
@@ -40,7 +42,7 @@ public class CrearVehiculoController implements Initializable {
     @FXML
     private Label lbTipo;
     @FXML
-    private ComboBox<?> cbTipo;
+    private ComboBox<String> cbTipo;
     @FXML
     private TextField txtPrecio;
     @FXML
@@ -50,7 +52,7 @@ public class CrearVehiculoController implements Initializable {
     @FXML
     private Label lbTransmision;
     @FXML
-    private ComboBox<?> cbTransmision;
+    private ComboBox<String> cbTransmision;
     @FXML
     private Label lbUbicacion;
     @FXML
@@ -71,11 +73,19 @@ public class CrearVehiculoController implements Initializable {
     private Button btCancelar;
     @FXML
     private Button btGuardar;
+    
+    private ArrayList<String> etiquetaTipo = new ArrayList<>();
+    private ArrayList<String> etiquetaTransmision = new ArrayList<>();
+    
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        cargarTipos();
+        cargarCombobox();
         // TODO
     }    
     
@@ -91,7 +101,36 @@ public class CrearVehiculoController implements Initializable {
     }
 
     @FXML
-    private void guardar(MouseEvent event) {
+    private void guardar() {
+        btGuardar.setOnAction((t)->{
+            Double precio = (double) txtPrecio.getText();
+        });
+    }
+    
+    public void cargarTipos(){
+        if(etiquetaTipo.isEmpty() && etiquetaTransmision.isEmpty()){
+            //TIPO
+            etiquetaTipo.add("Pesado");
+            etiquetaTipo.add("Liviano");
+            etiquetaTipo.add("Extra Pesado");
+            //TRANSMISION
+            etiquetaTransmision.add("Manual");
+            etiquetaTransmision.add("Automatica");
+        }
+        
+        
+    }
+    
+    public void cargarCombobox(){
+        if (cbTipo.getItems().isEmpty()){
+            for (String tipo: etiquetaTipo){
+                cbTipo.getItems().add(tipo);
+            }
+        }if (cbTransmision.getItems().isEmpty()){
+            for (String transmision: etiquetaTransmision){
+                cbTransmision.getItems().add(transmision);
+            }
+        }
     }
 
 }
