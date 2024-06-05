@@ -111,7 +111,7 @@
             <TextField prefHeight="26.0" prefWidth="178.0" />
          </children>
       </HBox>
-      <HBox layoutX="29.0" layoutY="250.0" prefHeight="214.0" prefWidth="441.0">
+      <HBox layoutX="22.0" layoutY="272.0" prefHeight="214.0" prefWidth="441.0">
          <children>
             <Label fx:id="lbDescripcion" prefHeight="27.0" prefWidth="121.0" text="DESCRIPCION:">
                <font>
@@ -131,5 +131,15 @@
             <Font size="18.0" />
          </font>
       </Button>
+      <HBox layoutX="22.0" layoutY="228.0" prefHeight="44.0" prefWidth="235.0">
+         <children>
+            <Label fx:id="lbanio" prefHeight="27.0" prefWidth="98.0" text="AÑO">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtanio" />
+         </children>
+      </HBox>
    </children>
 </Pane>

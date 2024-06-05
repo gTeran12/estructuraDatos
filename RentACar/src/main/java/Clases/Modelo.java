@@ -8,6 +8,25 @@ package Clases;
  *
  * @author guill
  */
-class Modelo {
+public class Modelo {
+    private String nombreModelo;
+
+    public Modelo(String nombreModelo) {
+        this.nombreModelo = nombreModelo;
+    }
+
+    public String getNombreModelo() {
+        return nombreModelo;
+    }
+
+    public void setNombreModelo(String nombreModelo) {
+        this.nombreModelo = nombreModelo;
+    }
+
+    @Override
+    public String toString() {
+        return "Modelo{" + "nombreModelo=" + nombreModelo + '}';
+    }
+    
     
 }

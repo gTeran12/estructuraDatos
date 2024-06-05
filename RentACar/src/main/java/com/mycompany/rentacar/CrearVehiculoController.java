@@ -6,6 +6,8 @@ package com.mycompany.rentacar;
  */
 
 
+import Clases.Tipo;
+import Clases.Transmision;
 import com.mycompany.rentacar.App;
 import com.mycompany.rentacar.clases.ArrayList;
 import java.io.IOException;
@@ -56,7 +58,7 @@ public class CrearVehiculoController implements Initializable {
     @FXML
     private Label lbUbicacion;
     @FXML
-    private ComboBox<?> cbUbicacion;
+    private ComboBox<String> cbUbicacion;
     @FXML
     private Label lbAccidentes;
     @FXML
@@ -74,8 +76,12 @@ public class CrearVehiculoController implements Initializable {
     @FXML
     private Button btGuardar;
     
-    private ArrayList<String> etiquetaTipo = new ArrayList<>();
-    private ArrayList<String> etiquetaTransmision = new ArrayList<>();
+    private ArrayList<Tipo> etiquetaTipo = new ArrayList<>();
+    private ArrayList<Transmision> etiquetaTransmision = new ArrayList<>();
+    @FXML
+    private Label lbanio;
+    @FXML
+    private TextField txtanio;
     
     
     /**
@@ -84,7 +90,7 @@ public class CrearVehiculoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        cargarTipos();
+        cargarDatos();
         cargarCombobox();
         // TODO
     }    
@@ -103,19 +109,20 @@ public class CrearVehiculoController implements Initializable {
     @FXML
     private void guardar() {
         btGuardar.setOnAction((t)->{
-            Double precio = (double) txtPrecio.getText();
         });
     }
     
-    public void cargarTipos(){
+    public void cargarDatos(){
         if(etiquetaTipo.isEmpty() && etiquetaTransmision.isEmpty()){
             //TIPO
-            etiquetaTipo.add("Pesado");
-            etiquetaTipo.add("Liviano");
-            etiquetaTipo.add("Extra Pesado");
+            etiquetaTipo.add(new Tipo("Pesado"));
+            etiquetaTipo.add(new Tipo("Liviano"));
+            etiquetaTipo.add(new Tipo("Extra Pesado2"));
             //TRANSMISION
-            etiquetaTransmision.add("Manual");
-            etiquetaTransmision.add("Automatica");
+            etiquetaTransmision.add(new Transmision("Manual"));
+            etiquetaTransmision.add(new Transmision("Automatica"));
+            //Accidentes
+            
         }
         
         
@@ -123,12 +130,13 @@ public class CrearVehiculoController implements Initializable {
     
     public void cargarCombobox(){
         if (cbTipo.getItems().isEmpty()){
-            for (String tipo: etiquetaTipo){
-                cbTipo.getItems().add(tipo);
+            for (Tipo tipo: etiquetaTipo){
+                cbTipo.getItems().add(tipo.getNombre());
             }
         }if (cbTransmision.getItems().isEmpty()){
-            for (String transmision: etiquetaTransmision){
-                cbTransmision.getItems().add(transmision);
+            for (Transmision transmision: etiquetaTransmision){
+                cbTransmision.getItems().add(transmision.getNombre());
+                
             }
         }
     }

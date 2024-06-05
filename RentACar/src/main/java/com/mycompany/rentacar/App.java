@@ -1,5 +1,8 @@
 package com.mycompany.rentacar;
 
+import Clases.Marca;
+import Clases.Modelo;
+import com.mycompany.rentacar.clases.LinkedList;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -7,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.HashMap;
 import javafx.scene.image.Image;
 
 /**
@@ -24,6 +28,8 @@ public class App extends Application {
         stage.setTitle("CAR RENTAL");//titulo de app
         stage.setScene(scene);
         stage.show();
+
+        
     }
 
     public static void setRoot(String fxml) throws IOException {

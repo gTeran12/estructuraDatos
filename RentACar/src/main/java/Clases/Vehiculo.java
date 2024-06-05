@@ -4,6 +4,8 @@
  */
 package Clases;
 
+import com.mycompany.rentacar.clases.ArrayList;
+
 /**
  *
  * @author guill
@@ -11,12 +13,18 @@ package Clases;
 public class Vehiculo {
     private Marca marca;
     private Modelo modelo;
+    private int anio;
+    private String ubicacion;
     private Tipo tipo;
     private Double precio;
     private Transmision transmision;
     private Double kilometraje;
     private String placa;
     private String rutaArchivo = "src/main/resources/files/vehiculos.txt";
+    
+    private ArrayList<Accidentes> accidentesRecords;
+    private ArrayList<Mantenimiento> mantenimientoRecords;
+    
     
     
 }

@@ -8,19 +8,15 @@ package Clases;
  *
  * @author guill
  */
-public class Transmision {
-    private String nombre;
+public class Foto {
+    private String path;
 
-    public String getNombre() {
-        return nombre;
+    public String getPath() {
+        return path;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public Transmision(String nombre) {
-        this.nombre = nombre;
+    public void setPath(String path) {
+        this.path = path;
     }
     
     
