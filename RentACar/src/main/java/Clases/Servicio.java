@@ -11,10 +11,10 @@ import javafx.beans.property.StringProperty;
  *
  * @author guill
  */
-public class Accidentes {
+public class Servicio {
     private final StringProperty descripcion;
-
-    public Accidentes(String descripcion) {
+    
+    public Servicio(String descripcion){
         this.descripcion = new SimpleStringProperty(descripcion);
     }
 

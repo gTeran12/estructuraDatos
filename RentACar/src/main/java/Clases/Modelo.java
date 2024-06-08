@@ -4,12 +4,16 @@
  */
 package Clases;
 
+import com.mycompany.rentacar.clases.LinkedList;
+
 /**
  *
  * @author guill
  */
 public class Modelo {
     private String nombreModelo;
+    LinkedList<Modelo> llModelo;
+    
 
     public Modelo(String nombreModelo) {
         this.nombreModelo = nombreModelo;

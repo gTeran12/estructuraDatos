@@ -11,7 +11,7 @@ import com.mycompany.rentacar.clases.ArrayList;
  * @author guill
  */
 public class Vehiculo {
-    private Marca marca;
+    private String marca;
     private Modelo modelo;
     private int anio;
     private String ubicacion;

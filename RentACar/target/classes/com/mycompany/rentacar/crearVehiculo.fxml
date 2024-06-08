@@ -3,10 +3,14 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.rentacar.CrearVehiculoController">
@@ -31,19 +35,9 @@
             <ComboBox fx:id="cbModelo" prefWidth="150.0" />
          </children>
       </HBox>
-      <HBox layoutX="22.0" layoutY="59.0" prefHeight="44.0" prefWidth="235.0">
+      <HBox layoutX="22.0" layoutY="81.0" prefHeight="44.0" prefWidth="235.0">
          <children>
-            <Label fx:id="lbTipo" prefHeight="27.0" prefWidth="98.0" text="TIPO:">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <ComboBox fx:id="cbTipo" prefWidth="150.0" />
-         </children>
-      </HBox>
-      <HBox layoutX="350.0" layoutY="59.0" prefHeight="44.0" prefWidth="235.0">
-         <children>
-            <Label prefHeight="27.0" prefWidth="98.0" text="PRECIO:">
+            <Label fx:id="lbprecio" prefHeight="27.0" prefWidth="98.0" text="PRECIO:">
                <font>
                   <Font size="18.0" />
                </font>
@@ -51,7 +45,7 @@
             <TextField fx:id="txtPrecio" />
          </children>
       </HBox>
-      <HBox layoutX="350.0" layoutY="103.0" prefHeight="44.0" prefWidth="280.0">
+      <HBox layoutX="350.0" layoutY="48.0" prefHeight="44.0" prefWidth="280.0">
          <children>
             <Label fx:id="lbKilometraje" prefHeight="27.0" prefWidth="126.0" text="KILOMETRAJE:">
                <font>
@@ -61,7 +55,7 @@
             <TextField fx:id="txtKilometraje" />
          </children>
       </HBox>
-      <HBox layoutX="22.0" layoutY="103.0" prefHeight="44.0" prefWidth="270.0">
+      <HBox layoutX="14.0" layoutY="114.0" prefHeight="44.0" prefWidth="270.0">
          <children>
             <Label fx:id="lbTransmision" prefHeight="27.0" prefWidth="152.0" text="TRANSMISION:">
                <font>
@@ -71,7 +65,7 @@
             <ComboBox fx:id="cbTransmision" prefWidth="150.0" />
          </children>
       </HBox>
-      <HBox layoutX="22.0" layoutY="147.0" prefHeight="44.0" prefWidth="270.0">
+      <HBox layoutX="14.0" layoutY="147.0" prefHeight="44.0" prefWidth="270.0">
          <children>
             <Label fx:id="lbUbicacion" prefHeight="27.0" prefWidth="152.0" text="UBICACION:">
                <font>
@@ -81,17 +75,7 @@
             <ComboBox fx:id="cbUbicacion" prefWidth="150.0" />
          </children>
       </HBox>
-      <HBox layoutX="350.0" layoutY="147.0" prefHeight="44.0" prefWidth="270.0">
-         <children>
-            <Label fx:id="lbAccidentes" prefHeight="27.0" prefWidth="152.0" text="ACCIDENTES:">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <ComboBox fx:id="cbAccidentes" prefWidth="150.0" />
-         </children>
-      </HBox>
-      <HBox layoutX="22.0" layoutY="191.0" prefHeight="44.0" prefWidth="235.0">
+      <HBox layoutX="350.0" layoutY="147.0" prefHeight="44.0" prefWidth="235.0">
          <children>
             <Label fx:id="lbPlaca" prefHeight="27.0" prefWidth="98.0" text="PLACA:">
                <font>
@@ -101,37 +85,27 @@
             <TextField fx:id="txtPlaca" />
          </children>
       </HBox>
-      <HBox layoutX="350.0" layoutY="191.0" prefHeight="44.0" prefWidth="280.0">
+      <HBox layoutX="22.0" layoutY="378.0" prefHeight="66.0" prefWidth="280.0">
          <children>
-            <Label prefHeight="27.0" prefWidth="92.0" text="IMAGEN:">
+            <Label fx:id="lbImagen" prefHeight="27.0" prefWidth="92.0" text="IMAGEN:">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField prefHeight="26.0" prefWidth="178.0" />
+            <ImageView fx:id="ivVehiculo" fitHeight="95.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </HBox>
-      <HBox layoutX="22.0" layoutY="272.0" prefHeight="214.0" prefWidth="441.0">
-         <children>
-            <Label fx:id="lbDescripcion" prefHeight="27.0" prefWidth="121.0" text="DESCRIPCION:">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <TextArea fx:id="txtDescripcion" prefHeight="214.0" prefWidth="322.0" text="INGRESAR LA DESCRIPCION DEL VEHICULO AQUI..." />
-         </children>
-      </HBox>
-      <Button fx:id="btCancelar" layoutX="533.0" layoutY="391.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="44.0" prefWidth="120.0" text="CANCELAR">
+      <Button fx:id="btCancelar" layoutX="531.0" layoutY="431.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="44.0" prefWidth="120.0" text="CANCELAR">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="btGuardar" layoutX="533.0" layoutY="335.0" mnemonicParsing="false" onAction="#guardar" prefHeight="44.0" prefWidth="120.0" text="GUARDAR">
+      <Button fx:id="btGuardar" layoutX="365.0" layoutY="431.0" mnemonicParsing="false" onAction="#guardar" prefHeight="44.0" prefWidth="120.0" text="GUARDAR">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <HBox layoutX="22.0" layoutY="228.0" prefHeight="44.0" prefWidth="235.0">
+      <HBox layoutX="22.0" layoutY="48.0" prefHeight="44.0" prefWidth="235.0">
          <children>
             <Label fx:id="lbanio" prefHeight="27.0" prefWidth="98.0" text="AÑO">
                <font>
@@ -141,5 +115,78 @@
             <TextField fx:id="txtanio" />
          </children>
       </HBox>
+      <HBox layoutX="350.0" layoutY="81.0" prefHeight="44.0" prefWidth="270.0">
+         <children>
+            <Label fx:id="lbTransmision1" prefHeight="27.0" prefWidth="152.0" text="MOTOR:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="cbMotor" prefWidth="150.0" />
+         </children>
+      </HBox>
+      <HBox layoutX="350.0" layoutY="114.0" prefHeight="44.0" prefWidth="280.0">
+         <children>
+            <Label fx:id="lbKilometraje1" prefHeight="27.0" prefWidth="126.0" text="PESO:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtPeso" />
+         </children>
+      </HBox>
+      <VBox layoutX="15.0" layoutY="177.0" prefHeight="229.0" prefWidth="270.0">
+         <children>
+            <HBox prefHeight="44.0" prefWidth="270.0">
+               <children>
+                  <Label fx:id="lbAccidentes" prefHeight="27.0" prefWidth="152.0" text="ACCIDENTES:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtAccidente" />
+                  <ImageView fx:id="addAccidente" fitHeight="35.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../assets/boton-mas.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <TableView fx:id="tbViewAccidentes" prefHeight="147.0" prefWidth="270.0">
+               <columns>
+                  <TableColumn fx:id="tbColumnAccidentes" prefWidth="250.0" text="Descripcion:" />
+               </columns>
+            </TableView>
+         </children>
+      </VBox>
+      <VBox layoutX="305.0" layoutY="177.0" prefHeight="229.0" prefWidth="270.0">
+         <children>
+            <HBox prefHeight="44.0" prefWidth="270.0">
+               <children>
+                  <Label fx:id="lbServicios" prefHeight="27.0" prefWidth="152.0" text="SERVICIOS:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtServicio" />
+                  <ImageView fx:id="addServicio" fitHeight="35.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../assets/boton-mas.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <TableView fx:id="tbViewServicios" prefHeight="143.0" prefWidth="250.0">
+               <columns>
+                  <TableColumn fx:id="tbColumnservicios" prefWidth="250.0" text="Descripcion:" />
+               </columns>
+            </TableView>
+         </children>
+      </VBox>
+      <Button fx:id="btAddImagen" layoutX="547.0" layoutY="378.0" mnemonicParsing="false" onAction="#cargarImagen" prefHeight="44.0" prefWidth="143.0" text="Add Imagen">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
    </children>
 </Pane>

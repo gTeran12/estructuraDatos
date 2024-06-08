@@ -14,14 +14,22 @@ import java.util.HashMap;
  */
 public class Marca {
     public String nombre;
-    public LinkedList<Modelo> linkedListModelo;
+    //public LinkedList<Modelo> linkedListModelo;
 
             
     public Marca(String nombre) {
         this.nombre = nombre;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
     
-    public void cargarModelosAMarca(){
+    /**public void cargarModelosAMarca(){
         HashMap<Marca,LinkedList<Modelo>> mapaMarca = new HashMap<>();
         linkedListModelo.append(new Modelo("RIO"));
         linkedListModelo.append(new Modelo("PICANTO"));
@@ -30,10 +38,10 @@ public class Marca {
         linkedListModelo.append(new Modelo("SELTOS"));
         for(int i = 0; i < linkedListModelo.getLength(); i++){
             mapaMarca.put(new Marca("KIA"), linkedListModelo);
-        }
+        }**/
         
     }
-    
+    /***
     public void addModeloAMarca() {
         HashMap<Marca, ArrayList<Modelo>> marcasModelos = new HashMap<>();
         ArrayList<Modelo> modelos = new ArrayList<>();
@@ -42,6 +50,6 @@ public class Marca {
         modelos.add(new Modelo("STONIC"));
         marcasModelos.put(new Marca("KIA"), modelos);
 
-    }
+    }**/
     
-}
+
