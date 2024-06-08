@@ -185,8 +185,17 @@ public class CrearVehiculoController implements Initializable {
         modeloHyunday.add("Tucson");
         modeloHyunday.add("Creta");
         
+        ArrayList<String> modeloKIA =  new ArrayList<>();
+        modeloKIA.add("Pregio");
+        modeloKIA.add("Picanto");
+        modeloKIA.add("Cerato");
+        modeloKIA.add("Soluto");
+        
         modelosPorMarca.put("Hyunday", modeloHyunday);
+        modelosPorMarca.put("KIA", modeloKIA);
         System.out.println(modeloHyunday.toString());
+        //{"Hyundai":["Electra","Creta","Tucson",...]}
+        //{"KIA":["Pregio","Picanto","Cerato",...]}
         
         //MOTOR
         etiquetaMotor.add("Gasolina");
@@ -230,7 +239,7 @@ public class CrearVehiculoController implements Initializable {
         tbColumnAccidentes.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
         tbViewAccidentes.setItems(listaAccidente);
         
-        tbColumnservicios.setCellValueFactory(new PropertyValueFactory<>("descripcions"));
+        tbColumnservicios.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
         tbViewServicios.setItems(listaServicio);
         
     }
@@ -240,6 +249,9 @@ public class CrearVehiculoController implements Initializable {
         if(descripcionAccidente != null && !descripcionAccidente.isEmpty()){
             listaAccidente.add(new Accidentes(descripcionAccidente));
             txtAccidente.clear();
+        }
+        for(int i = 0; i<listaAccidente.size(); i++){
+            System.out.println(listaAccidente.get(i).getDescripcion());
         }
     }
 
