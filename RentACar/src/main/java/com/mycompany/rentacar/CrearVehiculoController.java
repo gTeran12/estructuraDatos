@@ -180,58 +180,50 @@ public class CrearVehiculoController implements Initializable {
     @FXML
     private void guardar() {
         btGuardar.setOnMouseClicked((t) -> {
-            Vehiculo vehiculo = new Vehiculo();
-            vehiculo.setMarca(cbMarca.getValue());
-            vehiculo.setModelo(new Modelo(cbModelo.getValue()));
-            vehiculo.setAnio(Integer.parseInt(txtanio.getText()));
-            vehiculo.setKilometraje(Double.parseDouble(txtKilometraje.getText()));
-            vehiculo.setPrecio(Double.parseDouble(txtPrecio.getText()));
-            vehiculo.setMotor(cbMotor.getValue());
-            vehiculo.setTransmision(new Transmision(cbTransmision.getValue()));
-            vehiculo.setPeso(Double.parseDouble(txtPeso.getText()));
-            vehiculo.setUbicacion(cbUbicacion.getValue());
-            vehiculo.setPlaca(txtPlaca.getText());
-            
-            System.out.println(vehiculo.getAnio());
-
-            //TODO CHATGPT
-            //Agregame la lista de accidentes al vehiculo, sabiendo que la clase vehiculo tiene una variable private ArrayList<Accidentes> accidentesRecords; con su respectivo getter y setter
-            ArrayList<String> newListaAccidentes = new ArrayList<>();
-            for(Accidentes accidente:listaAccidente){
-                newListaAccidentes.add(accidente.getDescripcion());
-            }
-            vehiculo.setAccidentesRecords(newListaAccidentes);
-            System.out.println("Lista desde el boton guardar");
-            System.out.println(vehiculo.getAccidentesRecords());
-            
-            ArrayList<String> newListaServicios = new ArrayList<>();
-            for(Servicio servicio:listaServicio){
-                newListaServicios.add(servicio.getDescripcion());
-            }
-            vehiculo.setServicioRecords(newListaAccidentes);
-            System.out.println(vehiculo.toString());
+            crearVehiculo();
         });
 
     }
     
-    
-
-    
-    private Vehiculo obtenerVehiculoDesdeFormulario() {
+    public void crearVehiculo() {
         Vehiculo vehiculo = new Vehiculo();
-        //Vehiculo vehiculo = new Vehiculo(marca, modelo, indiceImagenActual, ubicacion, tipo, Double.NaN, transmision, Double.MIN_NORMAL, placa);
-        vehiculo.setPlaca(txtPlaca.getText());
         vehiculo.setMarca(cbMarca.getValue());
-        vehiculo.setModelo(new Modelo(cbModelo.getValue())); 
+        vehiculo.setModelo(new Modelo(cbModelo.getValue()));
         vehiculo.setAnio(Integer.parseInt(txtanio.getText()));
+        vehiculo.setKilometraje(Double.parseDouble(txtKilometraje.getText()));
+        vehiculo.setPrecio(Double.parseDouble(txtPrecio.getText()));
+        vehiculo.setMotor(cbMotor.getValue());
+        vehiculo.setTransmision(new Transmision(cbTransmision.getValue()));
+        vehiculo.setPeso(Double.parseDouble(txtPeso.getText()));
         vehiculo.setUbicacion(cbUbicacion.getValue());
-        vehiculo.setTipo(new Tipo(cbMotor.getValue())); 
-        vehiculo.setPrecio(Double.valueOf(txtPrecio.getText()));
-        vehiculo.setTransmision(new Transmision(cbTransmision.getValue())); 
-        vehiculo.setKilometraje(Double.valueOf(txtKilometraje.getText()));
-        return vehiculo;
+        vehiculo.setPlaca(txtPlaca.getText());
+
+        System.out.println(vehiculo.getAnio());
+
+        //TODO CHATGPT
+        //Agregame la lista de accidentes al vehiculo, sabiendo que la clase vehiculo tiene una variable private ArrayList<Accidentes> accidentesRecords; con su respectivo getter y setter
+        ArrayList<String> newListaAccidentes = new ArrayList<>();
+        for (Accidentes accidente : listaAccidente) {
+            newListaAccidentes.add(accidente.getDescripcion());
+        }
+        vehiculo.setAccidentesRecords(newListaAccidentes);
+        System.out.println("Lista desde el boton guardar");
+        System.out.println(vehiculo.getAccidentesRecords());
+
+        ArrayList<String> newListaServicios = new ArrayList<>();
+        for (Servicio servicio : listaServicio) {
+            newListaServicios.add(servicio.getDescripcion());
+        }
+        vehiculo.setServicioRecords(newListaAccidentes);
+        System.out.println(vehiculo.toString());
+        
+        guardaraVehiculoTxt(vehiculo);
     }
     
+    public void guardaraVehiculoTxt(Vehiculo vehiculo){
+        //TODO METODO PARA GUARDAR EL VEHICULO EN EL TXT
+    }
+     
     public void cargarDatos() {
         cargarMarcasYModelos();
         cargarMotores();

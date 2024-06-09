@@ -15,6 +15,7 @@ com\mycompany\rentacar\clases\Nodo.class
 Clases\Modelo.class
 Clases\Mantenimiento.class
 com\mycompany\rentacar\clases\ArrayList.class
+com\mycompany\rentacar\VerVehiculoController.class
 Clases\Foto.class
 com\mycompany\rentacar\SecondaryController.class
 Clases\Vehiculo.class
