@@ -181,7 +181,7 @@ public class CrearVehiculoController implements Initializable {
     }
     
     private void cargarMarcasYModelos() {
-        String archivoMarcasModelos = "marca_modelo.txt";
+        String archivoMarcasModelos = "src/main/resources/files/marca_modelo.txt";
         try (BufferedReader br = new BufferedReader(new FileReader(archivoMarcasModelos))) {
             String linea;
             while ((linea = br.readLine()) != null) {
@@ -209,17 +209,17 @@ public class CrearVehiculoController implements Initializable {
     }
     
     private void cargarMotores() {
-        String archivoMotores = "motores.txt";
+        String archivoMotores = "src/main/resources/files/motores.txt";
         cargarElementos(archivoMotores, etiquetaMotor);
     }
 
     private void cargarTransmisiones() {
-        String archivoTransmisiones = "transmisiones.txt";
+        String archivoTransmisiones = "src/main/resources/files/transmisiones.txt";
         cargarElementos2(archivoTransmisiones, etiquetaTransmision);
     }
 
     private void cargarUbicaciones() {
-        String archivoUbicaciones = "ciudades_Ubicacion.txt";
+        String archivoUbicaciones = "src/main/resources/files/ciudades_Ubicacion.txt";
         cargarElementos(archivoUbicaciones, etiquetaUbicacion);
     }
     
@@ -242,6 +242,7 @@ public class CrearVehiculoController implements Initializable {
             String linea;
             while ((linea = br.readLine()) != null) {
                 String[] elementos = linea.split(",");
+                System.out.println(linea);
                 for (String elemento : elementos) {
                     lista.add(new Transmision (elemento.trim()));
                 }

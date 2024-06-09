@@ -1,1 +1,1 @@
-Manual, Automática, CVT, DSG, Automática de doble embrague, Automática secuencial, Automática de convertidor de par, Automática de variador continuo, Automática de una velocidad, Automática de dos velocidades
+Manual, Automatica, CVT, DSG, Automatica de doble embrague, Automatica secuencial, Automatica de convertidor de par, Automatica de variador continuo, Automatica de una velocidad, Automatica de dos velocidades
