@@ -14,10 +14,12 @@ import Clases.Tipo;
 import Clases.Transmision;
 import com.mycompany.rentacar.App;
 import com.mycompany.rentacar.clases.ArrayList;
+import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Base64;
@@ -170,7 +172,85 @@ public class CrearVehiculoController implements Initializable {
         btGuardar.setOnAction((t)->{
         });
     }
+    
+    public void cargarDatos() {
+        cargarMarcasYModelos();
+        cargarMotores();
+        cargarTransmisiones();
+        cargarUbicaciones();
+    }
+    
+    private void cargarMarcasYModelos() {
+        String archivoMarcasModelos = "marca_modelo.txt";
+        try (BufferedReader br = new BufferedReader(new FileReader(archivoMarcasModelos))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                String[] partes = linea.split(":");
+                if (partes.length > 1) {
+                    String marca = partes[0].trim();
+                    String[] modelos = partes[1].split(",");
 
+                    // Añadir la marca a etiquetasMarcas
+                    etiquetamarcas.add(new Marca(marca));
+
+                    // Crear y llenar el ArrayList de modelos
+                    ArrayList<String> listaModelos = new ArrayList<>();
+                    for (String modelo : modelos) {
+                        listaModelos.add(modelo.trim());
+                    }
+
+                    // Poner la marca y su lista de modelos en el HashMap
+                    modelosPorMarca.put(marca, listaModelos);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private void cargarMotores() {
+        String archivoMotores = "motores.txt";
+        cargarElementos(archivoMotores, etiquetaMotor);
+    }
+
+    private void cargarTransmisiones() {
+        String archivoTransmisiones = "transmisiones.txt";
+        cargarElementos2(archivoTransmisiones, etiquetaTransmision);
+    }
+
+    private void cargarUbicaciones() {
+        String archivoUbicaciones = "ciudades_Ubicacion.txt";
+        cargarElementos(archivoUbicaciones, etiquetaUbicacion);
+    }
+    
+    private void cargarElementos(String archivo, ArrayList<String> lista) {
+        try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                String[] elementos = linea.split(",");
+                for (String elemento : elementos) {
+                    lista.add(elemento.trim());
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private void cargarElementos2(String archivo, ArrayList<Transmision> lista) {
+        try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                String[] elementos = linea.split(",");
+                for (String elemento : elementos) {
+                    lista.add(new Transmision (elemento.trim()));
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    /***
     public void cargarDatos() {
         //MARCA
         //TODO: cargarMarcas Archivos TXT, 
@@ -212,6 +292,7 @@ public class CrearVehiculoController implements Initializable {
         etiquetaUbicacion.add("Esmeraldas");
 
     }
+    ***/
     //Action que al seleccion la marca carga los modelos de dicha marca
     private void cargarModelos(){
         cbMarca.setOnAction((t) -> {
