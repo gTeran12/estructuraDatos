@@ -8,18 +8,23 @@ package com.mycompany.rentacar;
 
 import Clases.Accidentes;
 import Clases.Foto;
+import Clases.Mantenimiento;
 import Clases.Marca;
+import Clases.Modelo;
 import Clases.Servicio;
 import Clases.Tipo;
 import Clases.Transmision;
+import Clases.Vehiculo;
 import com.mycompany.rentacar.App;
 import com.mycompany.rentacar.clases.ArrayList;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Base64;
@@ -28,6 +33,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -139,7 +145,9 @@ public class CrearVehiculoController implements Initializable {
     private Button btAddImagen;
     @FXML
     private ImageView ivVehiculo;
-
+    
+    private File imagenFile;
+    private int indiceImagenActual = 0;
     
     /**
      * Initializes the controller class.
@@ -153,6 +161,7 @@ public class CrearVehiculoController implements Initializable {
         agregarAccidente();
         agregarServicio();
         configurarTabla();
+        guardar();
         // TODO
     }    
     
@@ -169,8 +178,74 @@ public class CrearVehiculoController implements Initializable {
 
     @FXML
     private void guardar() {
-        btGuardar.setOnAction((t)->{
+        btGuardar.setOnAction((t) -> {
+            Vehiculo vehiculo = obtenerVehiculoDesdeFormulario();
+            String rutaArchivo = "src/main/resources/files/vehiculos.txt";
+
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo, true))) {
+                // Convertir imagen a cadena de bytes
+                String imagenBytesString = convertirImagenABytesString(imagenFile);
+
+                // Convertir lista de accidentes y servicios a cadenas
+                List<String> accidentesStringList = obtenerAccidentesDesdeFormulario(tbViewAccidentes.getItems());
+                List<String> serviciosStringList = obtenerMantenimientosDesdeFormulario(tbViewServicios.getItems());
+
+                String accidentesString = String.join(",", accidentesStringList);
+                String serviciosString = String.join(",", serviciosStringList);
+
+                // Crear línea de texto para el archivo
+                String linea = vehiculo.getPlaca() + ":"
+                        + vehiculo.getMarca() + "|"
+                        + vehiculo.getModelo() + "|"
+                        + vehiculo.getAnio() + "|"
+                        + vehiculo.getUbicacion() + "|"
+                        + vehiculo.getTipo() + "|"
+                        + vehiculo.getPrecio() + "|"
+                        + vehiculo.getTransmision() + "|"
+                        + vehiculo.getKilometraje() + "|"
+                        + accidentesString + "|"
+                        + serviciosString + "|"
+                        + imagenBytesString;
+
+                // Escribir línea en el archivo
+                writer.write(linea);
+                writer.newLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Manejo de errores (por ejemplo, mostrar un mensaje al usuario)
+            }
         });
+    }
+    
+    private List<String> obtenerAccidentesDesdeFormulario(ObservableList<Accidentes> accidentesList) {
+    List<String> accidentesStrings = new ArrayList<>();
+    for (Accidentes accidente : accidentesList) {
+        accidentesStrings.add(accidente.getDescripcion());
+    }
+    return accidentesStrings;
+    }
+
+    private List<String> obtenerMantenimientosDesdeFormulario(ObservableList<Servicio> servicios) {
+    List<String> serviciosStringList = new ArrayList<>();
+    for (Servicio servicio : servicios) {
+        serviciosStringList.add(servicio.getDescripcion()); // Cambiar getNombre() por el método apropiado para obtener la información deseada
+    }
+    return serviciosStringList;
+    }
+    
+    private Vehiculo obtenerVehiculoDesdeFormulario() {
+        Vehiculo vehiculo = new Vehiculo(marca, modelo, indiceImagenActual, ubicacion, tipo, Double.NaN, transmision, Double.MIN_NORMAL, placa);
+        vehiculo.setPlaca(txtPlaca.getText());
+        vehiculo.setMarca(cbMarca.getValue());
+        vehiculo.setModelo(new Modelo(cbModelo.getValue())); 
+        vehiculo.setAnio(Integer.parseInt(txtanio.getText()));
+        vehiculo.setUbicacion(cbUbicacion.getValue());
+        vehiculo.setTipo(new Tipo(cbMotor.getValue())); 
+        vehiculo.setPrecio(Double.valueOf(txtPrecio.getText()));
+        vehiculo.setTransmision(new Transmision(cbTransmision.getValue())); 
+        vehiculo.setKilometraje(Double.valueOf(txtKilometraje.getText()));
+        
+        return vehiculo;
     }
     
     public void cargarDatos() {
@@ -258,7 +333,7 @@ public class CrearVehiculoController implements Initializable {
         etiquetamarcas.add(new Marca("Hyunday"));
         etiquetamarcas.add(new Marca("Toyota"));
         etiquetamarcas.add(new Marca("KIA"));
-        
+    
         //MODELO
         //TODO: debe cargarMarcas Archivos TXT
         ArrayList<String> modeloHyunday =  new ArrayList<>();
@@ -415,8 +490,8 @@ public class CrearVehiculoController implements Initializable {
 
 }
 
-
     
+
 
 
 
