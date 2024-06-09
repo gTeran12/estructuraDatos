@@ -17,13 +17,18 @@ public class Vehiculo {
     private String ubicacion;
     private Tipo tipo;
     private Double precio;
+    private String Motor;
     private Transmision transmision;
+    private Double peso;
     private Double kilometraje;
     private String placa;
-    private String rutaArchivo = "src/main/resources/files/vehiculos.txt";
     
-    private ArrayList<Accidentes> accidentesRecords;
-    private ArrayList<Mantenimiento> mantenimientoRecords;
+    private ArrayList<String> accidentesRecords;
+    private ArrayList<String> servicioRecords;
+    private ArrayList<String> listaImagenes;
+
+    public Vehiculo() {
+    }
 
     public Vehiculo(String marca, Modelo modelo, int anio, String ubicacion, Tipo tipo, Double precio, Transmision transmision, Double kilometraje, String placa) {
         this.marca = marca;
@@ -37,23 +42,47 @@ public class Vehiculo {
         this.placa = placa;
     }
 
-    public Vehiculo(String marca, Modelo modelo, int anio, String ubicacion, Tipo tipo, Double precio, Transmision transmision, Double kilometraje, String placa, ArrayList<Accidentes> accidentesRecords, ArrayList<Mantenimiento> mantenimientoRecords) {
+    public Vehiculo(String marca, Modelo modelo, int anio, String ubicacion, Tipo tipo, Double precio, String Motor, Transmision transmision, Double peso, Double kilometraje, String placa, ArrayList<String> accidentesRecords, ArrayList<String> servicioRecords, ArrayList<String> listaImagenes) {
         this.marca = marca;
         this.modelo = modelo;
         this.anio = anio;
         this.ubicacion = ubicacion;
         this.tipo = tipo;
         this.precio = precio;
+        this.Motor = Motor;
         this.transmision = transmision;
+        this.peso = peso;
         this.kilometraje = kilometraje;
         this.placa = placa;
         this.accidentesRecords = accidentesRecords;
-        this.mantenimientoRecords = mantenimientoRecords;
+        this.servicioRecords = servicioRecords;
+        this.listaImagenes = listaImagenes;
     }
 
-    
 
-    
+    public String getMotor() {
+        return Motor;
+    }
+
+    public void setMotor(String Motor) {
+        this.Motor = Motor;
+    }
+
+    public Double getPeso() {
+        return peso;
+    }
+
+    public void setPeso(Double peso) {
+        this.peso = peso;
+    }
+
+    public ArrayList<String> getListaImagenes() {
+        return listaImagenes;
+    }
+
+    public void setListaImagenes(ArrayList<String> rutaImagenes) {
+        this.listaImagenes = rutaImagenes;
+    }  
     
     public String getMarca() {
         return marca;
@@ -127,27 +156,27 @@ public class Vehiculo {
         this.placa = placa;
     }
 
-    public String getRutaArchivo() {
-        return rutaArchivo;
-    }
 
-    public void setRutaArchivo(String rutaArchivo) {
-        this.rutaArchivo = rutaArchivo;
-    }
-
-    public ArrayList<Accidentes> getAccidentesRecords() {
+    public ArrayList<String> getAccidentesRecords() {
         return accidentesRecords;
     }
 
-    public void setAccidentesRecords(ArrayList<Accidentes> accidentesRecords) {
+    public void setAccidentesRecords(ArrayList<String> accidentesRecords) {
         this.accidentesRecords = accidentesRecords;
     }
 
-    public ArrayList<Mantenimiento> getMantenimientoRecords() {
-        return mantenimientoRecords;
+    public ArrayList<String> getServicioRecords() {
+        return servicioRecords;
     }
 
-    public void setMantenimientoRecords(ArrayList<Mantenimiento> mantenimientoRecords) {
-        this.mantenimientoRecords = mantenimientoRecords;
+    public void setServicioRecords(ArrayList<String> servicioRecords) {
+        this.servicioRecords = servicioRecords;
     }
+
+    @Override
+    public String toString() {
+        return "Vehiculo{" + "marca=" + marca + ", modelo=" + modelo + ", anio=" + anio + ", ubicacion=" + ubicacion + ", tipo=" + tipo + ", precio=" + precio + ", Motor=" + Motor + ", transmision=" + transmision + ", peso=" + peso + ", kilometraje=" + kilometraje + ", placa=" + placa + ", accidentesRecords=" + accidentesRecords + ", servicioRecords=" + servicioRecords + '}';
+    }
+    
+    
 }

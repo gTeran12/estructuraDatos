@@ -23,6 +23,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -178,63 +179,47 @@ public class CrearVehiculoController implements Initializable {
 
     @FXML
     private void guardar() {
-        btGuardar.setOnAction((t) -> {
-            Vehiculo vehiculo = obtenerVehiculoDesdeFormulario();
-            String rutaArchivo = "src/main/resources/files/vehiculos.txt";
+        btGuardar.setOnMouseClicked((t) -> {
+            Vehiculo vehiculo = new Vehiculo();
+            vehiculo.setMarca(cbMarca.getValue());
+            vehiculo.setModelo(new Modelo(cbModelo.getValue()));
+            vehiculo.setAnio(Integer.parseInt(txtanio.getText()));
+            vehiculo.setKilometraje(Double.parseDouble(txtKilometraje.getText()));
+            vehiculo.setPrecio(Double.parseDouble(txtPrecio.getText()));
+            vehiculo.setMotor(cbMotor.getValue());
+            vehiculo.setTransmision(new Transmision(cbTransmision.getValue()));
+            vehiculo.setPeso(Double.parseDouble(txtPeso.getText()));
+            vehiculo.setUbicacion(cbUbicacion.getValue());
+            vehiculo.setPlaca(txtPlaca.getText());
+            
+            System.out.println(vehiculo.getAnio());
 
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo, true))) {
-                // Convertir imagen a cadena de bytes
-                String imagenBytesString = convertirImagenABytesString(imagenFile);
-
-                // Convertir lista de accidentes y servicios a cadenas
-                List<String> accidentesStringList = obtenerAccidentesDesdeFormulario(tbViewAccidentes.getItems());
-                List<String> serviciosStringList = obtenerMantenimientosDesdeFormulario(tbViewServicios.getItems());
-
-                String accidentesString = String.join(",", accidentesStringList);
-                String serviciosString = String.join(",", serviciosStringList);
-
-                // Crear línea de texto para el archivo
-                String linea = vehiculo.getPlaca() + ":"
-                        + vehiculo.getMarca() + "|"
-                        + vehiculo.getModelo() + "|"
-                        + vehiculo.getAnio() + "|"
-                        + vehiculo.getUbicacion() + "|"
-                        + vehiculo.getTipo() + "|"
-                        + vehiculo.getPrecio() + "|"
-                        + vehiculo.getTransmision() + "|"
-                        + vehiculo.getKilometraje() + "|"
-                        + accidentesString + "|"
-                        + serviciosString + "|"
-                        + imagenBytesString;
-
-                // Escribir línea en el archivo
-                writer.write(linea);
-                writer.newLine();
-            } catch (IOException e) {
-                e.printStackTrace();
-                // Manejo de errores (por ejemplo, mostrar un mensaje al usuario)
+            //TODO CHATGPT
+            //Agregame la lista de accidentes al vehiculo, sabiendo que la clase vehiculo tiene una variable private ArrayList<Accidentes> accidentesRecords; con su respectivo getter y setter
+            ArrayList<String> newListaAccidentes = new ArrayList<>();
+            for(Accidentes accidente:listaAccidente){
+                newListaAccidentes.add(accidente.getDescripcion());
             }
+            vehiculo.setAccidentesRecords(newListaAccidentes);
+            System.out.println("Lista desde el boton guardar");
+            System.out.println(vehiculo.getAccidentesRecords());
+            
+            ArrayList<String> newListaServicios = new ArrayList<>();
+            for(Servicio servicio:listaServicio){
+                newListaServicios.add(servicio.getDescripcion());
+            }
+            vehiculo.setServicioRecords(newListaAccidentes);
+            System.out.println(vehiculo.toString());
         });
+
     }
     
-    private List<String> obtenerAccidentesDesdeFormulario(ObservableList<Accidentes> accidentesList) {
-    List<String> accidentesStrings = new ArrayList<>();
-    for (Accidentes accidente : accidentesList) {
-        accidentesStrings.add(accidente.getDescripcion());
-    }
-    return accidentesStrings;
-    }
+    
 
-    private List<String> obtenerMantenimientosDesdeFormulario(ObservableList<Servicio> servicios) {
-    List<String> serviciosStringList = new ArrayList<>();
-    for (Servicio servicio : servicios) {
-        serviciosStringList.add(servicio.getDescripcion()); // Cambiar getNombre() por el método apropiado para obtener la información deseada
-    }
-    return serviciosStringList;
-    }
     
     private Vehiculo obtenerVehiculoDesdeFormulario() {
-        Vehiculo vehiculo = new Vehiculo(marca, modelo, indiceImagenActual, ubicacion, tipo, Double.NaN, transmision, Double.MIN_NORMAL, placa);
+        Vehiculo vehiculo = new Vehiculo();
+        //Vehiculo vehiculo = new Vehiculo(marca, modelo, indiceImagenActual, ubicacion, tipo, Double.NaN, transmision, Double.MIN_NORMAL, placa);
         vehiculo.setPlaca(txtPlaca.getText());
         vehiculo.setMarca(cbMarca.getValue());
         vehiculo.setModelo(new Modelo(cbModelo.getValue())); 
@@ -244,7 +229,6 @@ public class CrearVehiculoController implements Initializable {
         vehiculo.setPrecio(Double.valueOf(txtPrecio.getText()));
         vehiculo.setTransmision(new Transmision(cbTransmision.getValue())); 
         vehiculo.setKilometraje(Double.valueOf(txtKilometraje.getText()));
-        
         return vehiculo;
     }
     
@@ -401,15 +385,18 @@ public class CrearVehiculoController implements Initializable {
         
     }
     
-    public void agregarAccidente(){
+    public void agregarAccidente() {
         String descripcionAccidente = txtAccidente.getText();
-        if(descripcionAccidente != null && !descripcionAccidente.isEmpty()){
+        if (descripcionAccidente != null && !descripcionAccidente.isEmpty()) {
             listaAccidente.add(new Accidentes(descripcionAccidente));
             txtAccidente.clear();
         }
-        for(int i = 0; i<listaAccidente.size(); i++){
-            System.out.println(listaAccidente.get(i).getDescripcion());
+        System.out.println(listaAccidente.toString());
+        ArrayList<Accidentes> newListaAccidentes = new ArrayList<>();
+        for (Accidentes accidente : listaAccidente) {
+            newListaAccidentes.add(accidente);
         }
+        System.out.println(newListaAccidentes.toString());
     }
 
     public void agregarServicio(){
@@ -452,12 +439,20 @@ public class CrearVehiculoController implements Initializable {
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Imágenes", "*.png", "*.jpg", "*.jpeg", "*.gif"));
         List<File> files = fileChooser.showOpenMultipleDialog(null);
         if (files != null && !files.isEmpty()) {
+            File assetsDir = new File("src/main/resources/assets/pic");
+            if(!assetsDir.exists()){
+                assetsDir.mkdir();
+            }
             for (File file : files) {
-                Image image = new Image(file.toURI().toString());
-                fotos.add(image);
-
                 //Convertir img a byte y luego a cadena
                 try {
+                    //Copiar el archivo a la carpeta assets
+                    File destFile = new File(assetsDir, file.getName());
+                    copyFile(file, destFile);
+                    //Convertir la imagen a un objeto image y agregarla a la lista de fotos
+                    Image image = new Image(file.toURI().toString());
+                    fotos.add(image);
+                    //Convertir la imagen a bytes y luego a cadena para debug
                     String imageBytesString = convertirImagenABytesString(file);
                     System.out.println("Imagen como String de Bytes" + imageBytesString);
                 } catch (IOException e) {
@@ -468,6 +463,17 @@ public class CrearVehiculoController implements Initializable {
             int indiceImagenActual = 0;
         }
     }
+    
+    private void copyFile(File source, File dest) throws IOException {
+    try (FileInputStream fis = new FileInputStream(source);
+         FileOutputStream fos = new FileOutputStream(dest)) {
+        byte[] buffer = new byte[1024];
+        int length;
+        while ((length = fis.read(buffer)) > 0) {
+            fos.write(buffer, 0, length);
+        }
+    }
+}
     
     public String convertirImagenABytesString(File file) throws IOException{
         FileInputStream fis = new FileInputStream(file);

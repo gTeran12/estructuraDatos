@@ -28,7 +28,8 @@ public class ArrayList<E> implements java.util.List<E>, Serializable {
         arreglo = (E[]) new Object[capacidad];
         n = 0;
     }
-    
+
+
     @Override
     public int size() {
         return n;
