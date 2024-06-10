@@ -1,6 +1,7 @@
 package com.mycompany.rentacar.clases;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Iterator;
@@ -120,6 +121,12 @@ public class ArrayList<E> implements java.util.List<E>, Serializable {
         };
 
         return it;
+    }
+    
+    public static <T> ArrayList<T> asList(T... elementos) {
+        ArrayList<T> arrayList = new ArrayList<>();
+        arrayList.addAll(Arrays.asList(elementos));
+        return arrayList;
     }
 
     @Override

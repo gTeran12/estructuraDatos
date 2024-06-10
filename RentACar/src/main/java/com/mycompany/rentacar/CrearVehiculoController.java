@@ -400,7 +400,7 @@ public class CrearVehiculoController implements Initializable {
         
     }
     
-    public void agregarAccidente() {
+    public void agregarAccidente() {///USAR ESTO 
         String descripcionAccidente = txtAccidente.getText();
         if (descripcionAccidente != null && !descripcionAccidente.isEmpty()) {
             listaAccidente.add(new Accidentes(descripcionAccidente));

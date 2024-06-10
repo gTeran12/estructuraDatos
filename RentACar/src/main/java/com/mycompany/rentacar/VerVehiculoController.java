@@ -4,6 +4,8 @@
  */
 package com.mycompany.rentacar;
 
+import Clases.Vehiculo;
+import com.mycompany.rentacar.clases.ArrayList;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -71,6 +73,8 @@ public class VerVehiculoController implements Initializable {
     private TextField txtPlaca;
     @FXML
     private Button btBuscar;
+    
+    private ArrayList<Vehiculo> listaVehiculos = new ArrayList<>();
     /**
      * Initializes the controller class.
      */
@@ -123,5 +127,8 @@ public class VerVehiculoController implements Initializable {
             System.out.println("Aqui ingresara los valores que se jalen del txt a los labels");
         });
     }
-
+    
+    private void DescargarDatos(){
+        
+    }
 }

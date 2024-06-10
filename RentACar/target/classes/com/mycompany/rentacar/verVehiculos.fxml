@@ -14,7 +14,7 @@
    <children>
       <Button fx:id="btSalir" layoutX="547.0" layoutY="361.0" mnemonicParsing="false" onAction="#volverAlMenu" prefHeight="51.0" prefWidth="119.0" text="SALIR">
          <font>
-            <Font size="24.0" />
+            <Font size="18.0" />
          </font>
       </Button>
       <HBox layoutX="32.0" layoutY="24.0" prefHeight="44.0" prefWidth="235.0">
@@ -57,7 +57,7 @@
             <TextField fx:id="txtPrecioMaximo" prefHeight="26.0" prefWidth="149.0" />
          </children>
       </HBox>
-      <TableView layoutX="7.0" layoutY="147.0" prefHeight="338.0" prefWidth="519.0">
+      <TableView fx:id="tableViewVehiculos" layoutX="7.0" layoutY="147.0" prefHeight="338.0" prefWidth="519.0">
         <columns>
           <TableColumn fx:id="tbColumnPlaca" prefWidth="75.0" text="PLACA" />
           <TableColumn fx:id="tbColumnModelo" prefWidth="75.0" text="MODELO" />
@@ -87,5 +87,10 @@
             <TextField fx:id="txtKilometrajeMaximo" prefHeight="26.0" prefWidth="149.0" />
          </children>
       </HBox>
+      <Button fx:id="btBuscar" layoutX="547.0" layoutY="250.0" mnemonicParsing="false" onAction="#buscarVehiculos" prefHeight="51.0" prefWidth="119.0" text="BUSCAR">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
