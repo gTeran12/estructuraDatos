@@ -164,6 +164,7 @@ public class CrearVehiculoController implements Initializable {
         agregarServicio();
         configurarTabla();
         guardar();
+        cancelar();
         // TODO
     }    
     
@@ -171,7 +172,7 @@ public class CrearVehiculoController implements Initializable {
     private void cancelar() {
         btCancelar.setOnAction((t)->{
             try {
-                App.setRoot("primary");
+                App.setRoot("secondary");
             } catch (IOException ex) {
                 Logger.getLogger(CrearVehiculoController.class.getName()).log(Level.SEVERE, null, ex);
             }

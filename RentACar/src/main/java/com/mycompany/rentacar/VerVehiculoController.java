@@ -108,7 +108,7 @@ public class VerVehiculoController implements Initializable {
     private void volverAlMenu() {
         btSalir.setOnAction((t) -> {
             try {
-                App.setRoot("primary");
+                App.setRoot("secondary");
             } catch (IOException ex) {
                 Logger.getLogger(SecondaryController.class.getName()).log(Level.SEVERE, null, ex);
             }

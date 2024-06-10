@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -18,7 +19,16 @@
    <children>
       <VBox layoutX="26.0" layoutY="14.0" prefHeight="455.0" prefWidth="526.0">
          <children>
-            <Label fx:id="lbPlaca" prefHeight="42.0" prefWidth="196.0" text="Marca - Modelo " />
+            <HBox prefHeight="51.0" prefWidth="526.0">
+               <children>
+                  <Label fx:id="lbPlaca" prefHeight="42.0" prefWidth="196.0" text="PLACA:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtPlaca" prefHeight="38.0" prefWidth="191.0" />
+               </children>
+            </HBox>
             <VBox alignment="TOP_CENTER" prefHeight="212.0" prefWidth="374.0" spacing="5.0">
                <children>
                   <ImageView fx:id="imagenVehiculo" fitHeight="161.0" fitWidth="342.0" pickOnBounds="true" preserveRatio="true">
@@ -126,17 +136,22 @@
             </HBox>
          </children>
       </VBox>
-      <Button fx:id="btEditar" layoutX="552.0" layoutY="44.0" mnemonicParsing="false" onAction="#editarVehiculo" prefHeight="51.0" prefWidth="138.0" text="EDITAR">
+      <Button fx:id="btEditar" layoutX="551.0" layoutY="133.0" mnemonicParsing="false" onAction="#editarVehiculo" prefHeight="51.0" prefWidth="138.0" text="EDITAR">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button fx:id="btEliminar" layoutX="552.0" layoutY="120.0" mnemonicParsing="false" onAction="#eliminarVehiculo" text="ELIMINAR">
+      <Button fx:id="btEliminar" layoutX="552.0" layoutY="207.0" mnemonicParsing="false" onAction="#eliminarVehiculo" text="ELIMINAR">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button fx:id="btSalir" layoutX="552.0" layoutY="250.0" mnemonicParsing="false" onAction="#volverAlMenu" text="SALIR">
+      <Button fx:id="btSalir" layoutX="575.0" layoutY="347.0" mnemonicParsing="false" onAction="#volverAlMenu" text="SALIR">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="btBuscar" layoutX="552.0" layoutY="51.0" mnemonicParsing="false" onAction="#buscarVehiculo" prefHeight="51.0" prefWidth="138.0" text="BUSCAR">
          <font>
             <Font size="24.0" />
          </font>

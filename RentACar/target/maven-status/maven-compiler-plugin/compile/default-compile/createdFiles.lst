@@ -7,6 +7,7 @@ com\mycompany\rentacar\EditarVehiculoController.class
 com\mycompany\rentacar\clases\ArrayList$1.class
 Clases\Tipo.class
 Clases\Modelo.class
+com\mycompany\rentacar\clases\DoubleLinkedList$Node.class
 com\mycompany\rentacar\VerVehiculoController.class
 Clases\Foto.class
 com\mycompany\rentacar\SecondaryController.class
@@ -15,6 +16,7 @@ Clases\Transmision.class
 com\mycompany\rentacar\PrimaryController.class
 com\mycompany\rentacar\App.class
 module-info.class
+com\mycompany\rentacar\clases\DoubleLinkedList.class
 com\mycompany\rentacar\clases\LCDE_Vehiculo.class
 Clases\Marca.class
 com\mycompany\rentacar\VerVehiculosController.class

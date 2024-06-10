@@ -4,8 +4,14 @@
  */
 package com.mycompany.rentacar;
 
+import Clases.Marca;
+import Clases.Transmision;
+import com.mycompany.rentacar.clases.ArrayList;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -64,25 +70,89 @@ public class VerVehiculosController implements Initializable {
     private ComboBox<String> cbMarcaNew;
     @FXML
     private ComboBox<String> cbModeloNew;
+    
+    
+    
+    private ArrayList<Marca> etiquetamarcas = new ArrayList<>();
+    private HashMap<String, ArrayList<String>> modelosPorMarca = new HashMap<>();
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        volverAlMenu();
+        cargarDatos();
     }    
     
     @FXML
     private void volverAlMenu() {
         btSalir.setOnAction((t) -> {
             try {
-                App.setRoot("primary");
+                App.setRoot("secondary");
             } catch (IOException ex) {
                 Logger.getLogger(SecondaryController.class.getName()).log(Level.SEVERE, null, ex);
             }
+        });    
+    }
+    
+    public void cargarDatos() {
+        cargarMarcasYModelos();
+        cargarModelos();
+        cargarComboBox();
+    }
+    
+    private void cargarMarcasYModelos() {
+        String archivoMarcasModelos = "src/main/resources/files/marca_modelo.txt";
+        try (BufferedReader br = new BufferedReader(new FileReader(archivoMarcasModelos))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                String[] partes = linea.split(":");
+                if (partes.length > 1) {
+                    String marca = partes[0].trim();
+                    String[] modelos = partes[1].split(",");
+
+                    // Añadir la marca a etiquetasMarcas
+                    etiquetamarcas.add(new Marca(marca));
+
+                    // Crear y llenar el ArrayList de modelos
+                    ArrayList<String> listaModelos = new ArrayList<>();
+                    for (String modelo : modelos) {
+                        listaModelos.add(modelo.trim());
+                    }
+
+                    // Poner la marca y su lista de modelos en el HashMap
+                    modelosPorMarca.put(marca, listaModelos);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private void cargarModelos(){
+        cbMarcaNew.setOnAction((t) -> {
+            cargarModelosPorMarca();
         });
-        
+    }
+    
+    //Metodo que carga los modelos por marca al momento que selecciona una marca
+    private void cargarModelosPorMarca(){
+        String marcaSeleccionada = cbMarcaNew.getValue();
+        cbModeloNew.getItems().clear();
+        if(marcaSeleccionada != null && modelosPorMarca.containsKey(marcaSeleccionada)){
+            cbModeloNew.getItems().addAll(modelosPorMarca.get(marcaSeleccionada));
+        }
+    }
+    public void cargarComboBox(){
+        if(cbMarcaNew.getItems().isEmpty()){
+            for(Marca marca:etiquetamarcas){
+                cbMarcaNew.getItems().add(marca.getNombre());
+                
+            }
+        }
         
     }
+    
 
 }
