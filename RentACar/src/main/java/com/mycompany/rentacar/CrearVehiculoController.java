@@ -41,6 +41,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -181,6 +182,9 @@ public class CrearVehiculoController implements Initializable {
     private void guardar() {
         btGuardar.setOnMouseClicked((t) -> {
             crearVehiculo();
+            Alert mensaje = new Alert(Alert.AlertType.CONFIRMATION);
+            mensaje.setHeaderText("Guardado Exitosamente.");
+            mensaje.show();
             try {
                 App.setRoot("secondary");
             } catch (IOException ex) {
