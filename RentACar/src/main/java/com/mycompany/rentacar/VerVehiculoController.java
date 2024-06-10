@@ -67,6 +67,10 @@ public class VerVehiculoController implements Initializable {
     private TableView<?> tbViewAccidentes;
     @FXML
     private TableColumn<?, ?> tbColumnAccidentes;
+    @FXML
+    private TextField txtPlaca;
+    @FXML
+    private Button btBuscar;
     /**
      * Initializes the controller class.
      */
@@ -83,6 +87,11 @@ public class VerVehiculoController implements Initializable {
         btEditar.setOnMouseClicked((t) -> {
             //TODO metodo para editar un vehiculo
             System.out.println("Edita vehiculo");
+            try{
+                App.setRoot("editarVehiculo");
+            } catch(IOException ex) {
+                Logger.getLogger(SecondaryController.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
         });
     }
@@ -106,6 +115,13 @@ public class VerVehiculoController implements Initializable {
         });
         
         
+    }
+
+    @FXML
+    private void buscarVehiculo() {
+        btBuscar.setOnMouseClicked((t) -> {
+            System.out.println("Aqui ingresara los valores que se jalen del txt a los labels");
+        });
     }
 
 }

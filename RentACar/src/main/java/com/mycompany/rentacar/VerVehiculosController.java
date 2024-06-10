@@ -31,11 +31,7 @@ public class VerVehiculosController implements Initializable {
     @FXML
     private Label lbMarca;
     @FXML
-    private ComboBox<?> cbMarca;
-    @FXML
     private Label lbModelo;
-    @FXML
-    private ComboBox<?> cbModelo;
     @FXML
     private Label lbprecio;
     @FXML
@@ -64,6 +60,10 @@ public class VerVehiculosController implements Initializable {
     private Label lbprecio11;
     @FXML
     private TextField txtKilometrajeMaximo;
+    @FXML
+    private ComboBox<String> cbMarcaNew;
+    @FXML
+    private ComboBox<String> cbModeloNew;
     /**
      * Initializes the controller class.
      */
