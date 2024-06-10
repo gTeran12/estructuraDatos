@@ -175,8 +175,14 @@ public class Vehiculo {
 
     @Override
     public String toString() {
-        return "Vehiculo{" + "marca=" + marca + ", modelo=" + modelo + ", anio=" + anio + ", ubicacion=" + ubicacion + ", tipo=" + tipo + ", precio=" + precio + ", Motor=" + Motor + ", transmision=" + transmision + ", peso=" + peso + ", kilometraje=" + kilometraje + ", placa=" + placa + ", accidentesRecords=" + accidentesRecords + ", servicioRecords=" + servicioRecords + '}';
+        return placa + ":" + marca + "|" + modelo + "|" + anio + "|" + kilometraje + "|" + precio + "|" + Motor + "|" + 
+               transmision + "|" + peso + "|" + ubicacion + "|" + String.join(",", accidentesRecords) + "|" + 
+               String.join(",", servicioRecords) + "|" + String.join(",", listaImagenes);
     }
-    
+    public String toString2() {
+        return placa + ":" + marca + "|" + modelo + "|" + anio + "|" + kilometraje + "|" + precio + "|" + Motor + "|" + 
+               transmision + "|" + peso + "|" + ubicacion + "|" + String.join(",", accidentesRecords) + "|" + 
+               String.join(",", servicioRecords);
+    }
     
 }

@@ -133,7 +133,7 @@ public class CrearVehiculoController implements Initializable {
     private ObservableList<Accidentes> listaAccidente = FXCollections.observableArrayList();
     private ObservableList<Servicio> listaServicio = FXCollections.observableArrayList();
     private ArrayList<Image> fotos = new ArrayList<>();
-
+    
     @FXML
     private TableView<Accidentes> tbViewAccidentes;
     @FXML
@@ -181,10 +181,15 @@ public class CrearVehiculoController implements Initializable {
     private void guardar() {
         btGuardar.setOnMouseClicked((t) -> {
             crearVehiculo();
+            try {
+                App.setRoot("secondary");
+            } catch (IOException ex) {
+                Logger.getLogger(CrearVehiculoController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
 
     }
-    
+    private ArrayList<String> fotosVehiculo = new ArrayList<>();
     public void crearVehiculo() {
         Vehiculo vehiculo = new Vehiculo();
         vehiculo.setMarca(cbMarca.getValue());
@@ -214,14 +219,27 @@ public class CrearVehiculoController implements Initializable {
         for (Servicio servicio : listaServicio) {
             newListaServicios.add(servicio.getDescripcion());
         }
-        vehiculo.setServicioRecords(newListaAccidentes);
-        System.out.println(vehiculo.toString());
+        System.out.println(vehiculo.getServicioRecords());
+        vehiculo.setServicioRecords(newListaServicios);
+        System.out.println(vehiculo.toString2());
         
+      
+        vehiculo.setListaImagenes(fotosVehiculo);
+        System.out.println(vehiculo.toString());
         guardaraVehiculoTxt(vehiculo);
     }
     
     public void guardaraVehiculoTxt(Vehiculo vehiculo){
         //TODO METODO PARA GUARDAR EL VEHICULO EN EL TXT
+        String rutaArchivo = "src/main/resources/files/vehiculos.txt";
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo, true))) {
+            writer.write(vehiculo.toString());
+            writer.newLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
     }
      
     public void cargarDatos() {
@@ -445,8 +463,9 @@ public class CrearVehiculoController implements Initializable {
                     Image image = new Image(file.toURI().toString());
                     fotos.add(image);
                     //Convertir la imagen a bytes y luego a cadena para debug
-                    String imageBytesString = convertirImagenABytesString(file);
+                    String imageBytesString = convertirImagenABytesString(file);////Esto tengo que meterlo en el archivo
                     System.out.println("Imagen como String de Bytes" + imageBytesString);
+                    fotosVehiculo.add(imageBytesString);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

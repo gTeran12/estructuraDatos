@@ -29,7 +29,7 @@ public class Modelo {
 
     @Override
     public String toString() {
-        return "Modelo{" + "nombreModelo=" + nombreModelo + '}';
+        return nombreModelo;
     }
     
     
