@@ -5,9 +5,9 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.rentacar.SecondaryController">
    <children>
-      <Button fx:id="btCliente" layoutX="275.0" layoutY="192.0" mnemonicParsing="false" onAction="#accederCliente" prefHeight="37.0" prefWidth="150.0" text="BUSCAR VEHICULO" />
-      <Button fx:id="vehiculo" layoutX="275.0" layoutY="95.0" mnemonicParsing="false" onAction="#accederVehiculo" prefHeight="37.0" prefWidth="150.0" text="CREAR VEHICULO" />
+      <Button fx:id="btBuscarVehiculo" layoutX="275.0" layoutY="192.0" mnemonicParsing="false" onAction="#accederBuscarVehiculos" prefHeight="37.0" prefWidth="150.0" text="BUSCAR VEHICULO" />
+      <Button fx:id="crearVehiculo" layoutX="275.0" layoutY="95.0" mnemonicParsing="false" onAction="#accederVehiculo" prefHeight="37.0" prefWidth="150.0" text="CREAR VEHICULO" />
       <Button fx:id="btSalir" layoutX="275.0" layoutY="390.0" mnemonicParsing="false" onAction="#salir" prefHeight="37.0" prefWidth="150.0" text="SALIR" />
-      <Button fx:id="btRentar" layoutX="275.0" layoutY="290.0" mnemonicParsing="false" onAction="#accederRentar" prefHeight="37.0" prefWidth="150.0" text="VER VEHICULOS" />
+      <Button fx:id="btVerVehiculos" layoutX="275.0" layoutY="290.0" mnemonicParsing="false" onAction="#accederVerVehiculos" prefHeight="37.0" prefWidth="150.0" text="VER VEHICULOS" />
    </children>
 </AnchorPane>

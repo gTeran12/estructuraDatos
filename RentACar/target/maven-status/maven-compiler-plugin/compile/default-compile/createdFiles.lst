@@ -3,6 +3,7 @@ Clases\Servicio.class
 com\mycompany\rentacar\CrearVehiculoController.class
 com\mycompany\rentacar\clases\LinkedList.class
 Clases\Accidentes.class
+com\mycompany\rentacar\EditarVehiculoController.class
 com\mycompany\rentacar\clases\ArrayList$1.class
 Clases\Tipo.class
 Clases\Modelo.class
@@ -16,6 +17,7 @@ com\mycompany\rentacar\App.class
 module-info.class
 com\mycompany\rentacar\clases\LCDE_Vehiculo.class
 Clases\Marca.class
+com\mycompany\rentacar\VerVehiculosController.class
 com\mycompany\rentacar\clases\Nodo.class
 Clases\Mantenimiento.class
 com\mycompany\rentacar\clases\ArrayList.class

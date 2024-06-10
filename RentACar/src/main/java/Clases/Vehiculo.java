@@ -176,12 +176,12 @@ public class Vehiculo {
     @Override
     public String toString() {
         return placa + ":" + marca + "|" + modelo + "|" + anio + "|" + kilometraje + "|" + precio + "|" + Motor + "|" + 
-               transmision + "|" + peso + "|" + ubicacion + "|" + String.join(",", accidentesRecords) + "|" + 
+               transmision.getNombre() + "|" + peso + "|" + ubicacion + "|" + String.join(",", accidentesRecords) + "|" + 
                String.join(",", servicioRecords) + "|" + String.join(",", listaImagenes);
     }
     public String toString2() {
         return placa + ":" + marca + "|" + modelo + "|" + anio + "|" + kilometraje + "|" + precio + "|" + Motor + "|" + 
-               transmision + "|" + peso + "|" + ubicacion + "|" + String.join(",", accidentesRecords) + "|" + 
+               transmision.getNombre() + "|" + peso + "|" + ubicacion + "|" + String.join(",", accidentesRecords) + "|" + 
                String.join(",", servicioRecords);
     }
     

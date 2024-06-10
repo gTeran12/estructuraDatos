@@ -20,8 +20,10 @@ public class LCDE_Vehiculo {
 
     public void adicionarCabeza() {
         Nodo nuevo = new Nodo();
-        nuevo.obj.getPlaca();
-        nuevo.obj.getListaImagenes();
+        String placa = new String();
+        nuevo.obj.setPlaca(placa);
+        //nuevo.obj.setPrecio(Double.NaN);
+        //nuevo.obj.setListaImagenes(rutaImagenes);
 
         nuevo.siguiente = cabeza;
         if (cabeza != null) {
@@ -75,6 +77,8 @@ public class LCDE_Vehiculo {
             }
         }
     }
+    
+
     
 
 

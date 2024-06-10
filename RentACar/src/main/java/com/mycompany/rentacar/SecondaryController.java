@@ -9,6 +9,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
@@ -20,15 +21,14 @@ import javafx.scene.control.Button;
  */
 public class SecondaryController implements Initializable {
 
-
-    @FXML
-    private Button btCliente;
-    @FXML
-    private Button vehiculo;
     @FXML
     private Button btSalir;
     @FXML
-    private Button btRentar;
+    private Button btBuscarVehiculo;
+    @FXML
+    private Button crearVehiculo;
+    @FXML
+    private Button btVerVehiculos;
     /**
      * Initializes the controller class.
      */
@@ -37,20 +37,10 @@ public class SecondaryController implements Initializable {
         // TODO
     }    
     
-    @FXML
-    private void accederCliente() {
-        btCliente.setOnAction((t)->{
-            try {
-                App.setRoot("crearCliente");
-            } catch (IOException ex) {
-                Logger.getLogger(SecondaryController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        });
-    }
 
     @FXML
     private void accederVehiculo() {
-        vehiculo.setOnMouseClicked((t)->{
+        crearVehiculo.setOnMouseClicked((t)->{
             try {
                 App.setRoot("crearVehiculo");
             } catch (IOException ex) {
@@ -61,7 +51,7 @@ public class SecondaryController implements Initializable {
 
     @FXML
     private void salir() {
-        btSalir.setOnAction((t)->{
+        btSalir.setOnMouseClicked((t)->{
             try {
                 App.setRoot("primary");
             } catch (IOException ex) {
@@ -71,8 +61,29 @@ public class SecondaryController implements Initializable {
     }
 
     @FXML
-    private void accederRentar() {
+    private void accederBuscarVehiculos() {
+        btBuscarVehiculo.setOnMouseClicked((t) -> {
+            try{
+                App.setRoot("verVehiculo");
+            } catch (IOException ex){
+                Logger.getLogger(SecondaryController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
         
     }
+
+    @FXML
+    private void accederVerVehiculos() {
+        btVerVehiculos.setOnMouseClicked((t) -> {
+            try{
+                App.setRoot("verVehiculos");
+            } catch (IOException ex){
+                Logger.getLogger(SecondaryController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+    }
+
+    
+
 
 }

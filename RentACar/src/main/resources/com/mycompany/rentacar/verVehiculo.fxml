@@ -136,5 +136,10 @@
             <Font size="24.0" />
          </font>
       </Button>
+      <Button fx:id="btSalir" layoutX="552.0" layoutY="250.0" mnemonicParsing="false" onAction="#volverAlMenu" text="SALIR">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
