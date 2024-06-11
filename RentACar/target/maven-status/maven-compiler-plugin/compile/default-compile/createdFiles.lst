@@ -1,6 +1,7 @@
 com\mycompany\rentacar\clases\LinkedList$Node.class
 Clases\Servicio.class
 com\mycompany\rentacar\CrearVehiculoController.class
+com\mycompany\rentacar\CardViewController.class
 com\mycompany\rentacar\clases\LinkedList.class
 Clases\Accidentes.class
 com\mycompany\rentacar\EditarVehiculoController.class
@@ -17,6 +18,8 @@ com\mycompany\rentacar\PrimaryController.class
 com\mycompany\rentacar\App.class
 module-info.class
 com\mycompany\rentacar\clases\DoubleLinkedList.class
+com\mycompany\rentacar\clases\LCDE$Node.class
+com\mycompany\rentacar\clases\LCDE.class
 com\mycompany\rentacar\clases\LCDE_Vehiculo.class
 Clases\Marca.class
 com\mycompany\rentacar\VerVehiculosController.class

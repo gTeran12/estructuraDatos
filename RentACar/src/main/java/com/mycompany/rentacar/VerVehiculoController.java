@@ -10,6 +10,7 @@ import Clases.Servicio;
 import Clases.Transmision;
 import Clases.Vehiculo;
 import com.mycompany.rentacar.clases.ArrayList;
+import com.mycompany.rentacar.clases.LCDE;
 import com.mycompany.rentacar.clases.LCDE_Vehiculo;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -92,8 +93,8 @@ public class VerVehiculoController implements Initializable {
     
     private ObservableList<Accidentes> listaAccidente = FXCollections.observableArrayList();
     private ObservableList<Servicio> listaServicio = FXCollections.observableArrayList();
-    //private LCDE_Vehiculo<Image> fotos = new ArrayList<>();
-
+    
+    private LCDE<Image> listaImagenes = new LCDE<>();
     /**
      * Initializes the controller class.
      */
@@ -104,6 +105,9 @@ public class VerVehiculoController implements Initializable {
         eliminarVehiculo();
         volverAlMenu();
         cargarVehiculosDesdeArchivo();
+        mostrarImagenActual();
+        configurarBotonesNavegacion();
+        
 
     }
 
@@ -152,6 +156,7 @@ public class VerVehiculoController implements Initializable {
                 lbUbicacion.setText(vehiculoEncontrado.getUbicacion());
                 lbPrecioFijo.setText(String.valueOf(vehiculoEncontrado.getPrecio()));
                 lbKilometraje.setText(String.valueOf(vehiculoEncontrado.getKilometraje()));
+                cargarImagenesVehiculo(vehiculoEncontrado);
                 // Cargar la imagen del vehículo, etc.
                 System.out.println("Vehículo encontrado: " + vehiculoEncontrado.toString());
             } else {
@@ -245,6 +250,38 @@ public class VerVehiculoController implements Initializable {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+    
+    private void cargarImagenesVehiculo(Vehiculo vehiculo) {
+        listaImagenes = new LCDE();
+        for (String rutaImagen : vehiculo.getListaImagenes()) {
+            Image imagen = new Image("file:" + rutaImagen);
+            listaImagenes.add(imagen);
+        }
+        System.out.println(listaImagenes.toString());
+    }
+
+    private void configurarBotonesNavegacion() {
+        previewPage.setOnMouseClicked((t) -> {
+            imagenVehiculo.setImage(listaImagenes.prev());
+            System.out.println("Imagen Previa");
+        });
+
+        nextPage.setOnMouseClicked((t) -> {
+            imagenVehiculo.setImage(listaImagenes.next());
+            System.out.println("Imagen Siguiente");
+        });
+    }
+    
+    private void mostrarImagenActual() {
+        Image imagenActual = listaImagenes.getCurrent();
+        if (imagenActual != null) {
+            imagenVehiculo.setImage(imagenActual);
+        } else {
+            // Manejar el caso en que no haya imagen actual
+            // Por ejemplo, puedes mostrar una imagen predeterminada o dejar el ImageView vacío
+            imagenVehiculo.setImage(null); // O asignar una imagen predeterminada
         }
     }
 }
