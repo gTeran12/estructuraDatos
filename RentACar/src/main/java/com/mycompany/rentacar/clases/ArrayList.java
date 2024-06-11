@@ -146,7 +146,22 @@ public class ArrayList<E> implements java.util.List<E>, Serializable {
 
     @Override
     public boolean remove(Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    if (o == null) {
+        for (int index = 0; index < n; index++) {
+            if (arreglo[index] == null) {
+                remove(index);
+                return true;
+            }
+        }
+    } else {
+        for (int index = 0; index < n; index++) {
+            if (o.equals(arreglo[index])) {
+                remove(index);
+                return true;
+            }
+        }
+    }
+    return false;
     }
 
     @Override
