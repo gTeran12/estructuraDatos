@@ -92,12 +92,12 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
-                        <Label fx:id="lbPrecioFijo" text="Precio:">
+                        <Label fx:id="lbPrecio" text="Precio:">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lbPrecio">
+                        <Label fx:id="lbPrecioFijo">
                            <font>
                               <Font size="24.0" />
                            </font>

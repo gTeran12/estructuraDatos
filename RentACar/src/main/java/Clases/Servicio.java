@@ -13,6 +13,7 @@ import javafx.beans.property.StringProperty;
  */
 public class Servicio {
     private final StringProperty descripcion;
+    private String descripcion2;
     
     public Servicio(String descripcion){
         this.descripcion = new SimpleStringProperty(descripcion);
