@@ -6,10 +6,7 @@ package com.mycompany.rentacar.clases;
 
 import Clases.Vehiculo;
 
-/**
- *
- * @author guill
- */
+
 class Nodo {
     Vehiculo obj;
     Nodo anterior, siguiente;

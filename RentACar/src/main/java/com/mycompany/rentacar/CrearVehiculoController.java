@@ -325,49 +325,7 @@ public class CrearVehiculoController implements Initializable {
             e.printStackTrace();
         }
     }
-    /***
-    public void cargarDatos() {
-        //MARCA
-        //TODO: cargarMarcas Archivos TXT, 
-        etiquetamarcas.add(new Marca("Hyunday"));
-        etiquetamarcas.add(new Marca("Toyota"));
-        etiquetamarcas.add(new Marca("KIA"));
     
-        //MODELO
-        //TODO: debe cargarMarcas Archivos TXT
-        ArrayList<String> modeloHyunday =  new ArrayList<>();
-        modeloHyunday.add("Elantra");
-        modeloHyunday.add("Tucson");
-        modeloHyunday.add("Creta");
-        
-        ArrayList<String> modeloKIA =  new ArrayList<>();
-        modeloKIA.add("Pregio");
-        modeloKIA.add("Picanto");
-        modeloKIA.add("Cerato");
-        modeloKIA.add("Soluto");
-        
-        modelosPorMarca.put("Hyunday", modeloHyunday);
-        modelosPorMarca.put("KIA", modeloKIA);
-        System.out.println(modeloHyunday.toString());
-        //{"Hyundai":["Electra","Creta","Tucson",...]}
-        //{"KIA":["Pregio","Picanto","Cerato",...]}
-        
-        //MOTOR
-        etiquetaMotor.add("Gasolina");
-        etiquetaMotor.add("Diesel");
-
-
-        //TRANSMISION
-        etiquetaTransmision.add(new Transmision("Manual"));
-        etiquetaTransmision.add(new Transmision("Automatica"));
-        //UBICACION
-        etiquetaUbicacion.add("Guayaquil");
-        etiquetaUbicacion.add("Quito");
-        etiquetaUbicacion.add("Santo Domingo");
-        etiquetaUbicacion.add("Esmeraldas");
-
-    }
-    ***/
     //Action que al seleccion la marca carga los modelos de dicha marca
     private void cargarModelos(){
         cbMarca.setOnAction((t) -> {

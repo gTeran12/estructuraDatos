@@ -13,9 +13,11 @@ import com.mycompany.rentacar.clases.ArrayList;
 import com.mycompany.rentacar.clases.LCDE;
 import com.mycompany.rentacar.clases.LCDE_Vehiculo;
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Base64;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -75,22 +77,19 @@ public class VerVehiculoController implements Initializable {
     @FXML
     private Label lbKilometraje;
     @FXML
-    private TableView<?> tbViewServicios;
+    private TableView<Servicio> tbViewServicios;
     @FXML
-    private TableColumn<?, ?> tbColumnservicios;
+    private TableColumn<Servicio, String> tbColumnservicios;
     @FXML
-    private TableView<?> tbViewAccidentes;
+    private TableView<Accidentes> tbViewAccidentes;
     @FXML
-    private TableColumn<?, ?> tbColumnAccidentes;
+    private TableColumn<Accidentes, String> tbColumnAccidentes;
     @FXML
     private TextField txtPlaca;
     @FXML
     private Button btBuscar;
 
     private ArrayList<Vehiculo> vehiculos = new ArrayList<>();
-
-    private ArrayList<Vehiculo> listaVehiculos = new ArrayList<>();
-    
     private ObservableList<Accidentes> listaAccidente = FXCollections.observableArrayList();
     private ObservableList<Servicio> listaServicio = FXCollections.observableArrayList();
     
@@ -105,10 +104,8 @@ public class VerVehiculoController implements Initializable {
         eliminarVehiculo();
         volverAlMenu();
         cargarVehiculosDesdeArchivo();
-        mostrarImagenActual();
+        configurarTabla();
         configurarBotonesNavegacion();
-        
-
     }
 
     @FXML
@@ -144,29 +141,36 @@ public class VerVehiculoController implements Initializable {
         });
 
     }
-
+    
     @FXML
     private void buscarVehiculo() {
         btBuscar.setOnMouseClicked((t) -> {
             Vehiculo vehiculoEncontrado = filtrarVehiculo();
             if (vehiculoEncontrado != null) {
-                // Llenar los labels con los datos del vehículo encontrado
                 lbPlaca.setText(vehiculoEncontrado.getPlaca());
                 lbAnio.setText(String.valueOf(vehiculoEncontrado.getAnio()));
                 lbUbicacion.setText(vehiculoEncontrado.getUbicacion());
                 lbPrecioFijo.setText(String.valueOf(vehiculoEncontrado.getPrecio()));
                 lbKilometraje.setText(String.valueOf(vehiculoEncontrado.getKilometraje()));
+
                 cargarImagenesVehiculo(vehiculoEncontrado);
-                // Cargar la imagen del vehículo, etc.
+                mostrarImagenActual(); // Asegúrate de mostrar la primera imagen
+
+                llenarTablaServicios(vehiculoEncontrado);
+                llenarTablaAccidentes(vehiculoEncontrado);
+
                 System.out.println("Vehículo encontrado: " + vehiculoEncontrado.toString());
             } else {
-                // Manejar el caso en que no se encuentre el vehículo
                 lbPlaca.setText("No encontrado");
                 lbAnio.setText("");
                 lbUbicacion.setText("");
                 lbPrecioFijo.setText("");
                 lbKilometraje.setText("");
-                // Manejar la imagen del vehículo, etc.
+
+                listaServicio.clear();
+                listaAccidente.clear();
+                imagenVehiculo.setImage(null);
+
                 System.out.println("No se encontró ningún vehículo con la placa ingresada.");
             }
         });
@@ -183,12 +187,11 @@ public class VerVehiculoController implements Initializable {
         return null;
     }
 
-    private void configurarTabla(){
+    private void configurarTabla() {
         tbColumnAccidentes.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
         tbColumnservicios.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
-        //tbViewServicios.setItems(listaServicio);
-        //tbViewAccidentes.setItems(listaAccidente);
-        
+        tbViewServicios.setItems(listaServicio);
+        tbViewAccidentes.setItems(listaAccidente);
     }
     
     private void llenarTablaServicios(Vehiculo vehiculo) {
@@ -196,7 +199,7 @@ public class VerVehiculoController implements Initializable {
         for (String servicioDescripcion : vehiculo.getServicioRecords()) {
             listaServicio.add(new Servicio(servicioDescripcion));
         }
-        //tbViewServicios.setItems(listaServicio);
+        tbViewServicios.setItems(listaServicio);
     }
     
     private void llenarTablaAccidentes(Vehiculo vehiculo) {
@@ -204,7 +207,7 @@ public class VerVehiculoController implements Initializable {
         for (String accidenteDescripcion : vehiculo.getAccidentesRecords()) {
             listaAccidente.add(new Accidentes(accidenteDescripcion));
         }
-        //tbViewAccidentes.setItems(listaAccidente);
+        tbViewAccidentes.setItems(listaAccidente);
     }
     
     private void cargarVehiculosDesdeArchivo() {
@@ -227,24 +230,25 @@ public class VerVehiculoController implements Initializable {
                     vehiculo.setTransmision(new Transmision(datos[6]));
                     vehiculo.setPeso(Double.parseDouble(datos[7]));
                     vehiculo.setUbicacion(datos[8]);
+
                     ArrayList<String> newAccidentes = new ArrayList<>();
-                    //System.out.println(datos[9].split(","));
-                    for (int i = 0; i < datos[9].split(",").length; i++) {
-                        newAccidentes.add(datos[9].split(",")[i]);
+                    for (String accidente : datos[9].split(",")) {
+                        newAccidentes.add(accidente);
                     }
                     vehiculo.setAccidentesRecords(newAccidentes);
+
                     ArrayList<String> newServicios = new ArrayList<>();
-                    //System.out.println(datos[9].split(","));
-                    for (int i = 0; i < datos[10].split(",").length; i++) {
-                        newServicios.add(datos[10].split(",")[i]);
+                    for (String servicio : datos[10].split(",")) {
+                        newServicios.add(servicio);
                     }
                     vehiculo.setServicioRecords(newServicios);
+
                     ArrayList<String> newImagenes = new ArrayList<>();
-                    //System.out.println(datos[9].split(","));
-                    for (int i = 0; i < datos[11].split(",").length; i++) {
-                        newImagenes.add(datos[11].split(",")[i]);
+                    for (String imagen : datos[11].split(",")) {
+                        newImagenes.add(imagen);
                     }
-                    //vehiculo.setListaImagenes(ArrayList.asList(datos[11].split(",")));
+                    vehiculo.setListaImagenes(newImagenes);
+
                     vehiculos.add(vehiculo);
                 }
             }
@@ -254,12 +258,11 @@ public class VerVehiculoController implements Initializable {
     }
     
     private void cargarImagenesVehiculo(Vehiculo vehiculo) {
-        listaImagenes = new LCDE();
-        for (String rutaImagen : vehiculo.getListaImagenes()) {
-            Image imagen = new Image("file:" + rutaImagen);
+        listaImagenes = new LCDE<>();
+        for (String imagenString : vehiculo.getListaImagenes()) {
+            Image imagen = convertirStringAImagen(imagenString);
             listaImagenes.add(imagen);
         }
-        System.out.println(listaImagenes.toString());
     }
 
     private void configurarBotonesNavegacion() {
@@ -279,9 +282,12 @@ public class VerVehiculoController implements Initializable {
         if (imagenActual != null) {
             imagenVehiculo.setImage(imagenActual);
         } else {
-            // Manejar el caso en que no haya imagen actual
-            // Por ejemplo, puedes mostrar una imagen predeterminada o dejar el ImageView vacío
             imagenVehiculo.setImage(null); // O asignar una imagen predeterminada
         }
+    }
+    private Image convertirStringAImagen(String imageBytesString) {
+        byte[] imageBytes = Base64.getDecoder().decode(imageBytesString);
+        ByteArrayInputStream bais = new ByteArrayInputStream(imageBytes);
+        return new Image(bais);
     }
 }
